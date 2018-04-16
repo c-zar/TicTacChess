@@ -1,5 +1,5 @@
-#include "chess.h"
-#include "chessPiece.h"
+#include "../headers/chess.h"
+#include "../headers/chessPiece.h"
 #include <iostream>
 #include <string>
 

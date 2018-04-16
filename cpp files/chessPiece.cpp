@@ -1,4 +1,4 @@
-#include "chessPiece.h"
+#include "../headers/chessPiece.h"
 
 pawn::pawn(int player) {
     this->player=player;

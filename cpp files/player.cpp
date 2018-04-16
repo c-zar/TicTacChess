@@ -1,4 +1,4 @@
-#include "player.h"
+#include "../headers/player.h"
 
 player::player(string name, int number) {
     this->name = name;

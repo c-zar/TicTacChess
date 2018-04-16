@@ -1,4 +1,4 @@
-#include "game.h"
+#include "../headers/game.h"
 
 game::game(string p1name, string p2name) {
     this->p1 = new player(p1name, 1);
