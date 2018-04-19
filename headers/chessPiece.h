@@ -1,62 +1,38 @@
 #ifndef CHESS_CHESSPIECE_H
 #define CHESS_CHESSPIECE_H
+
 #include <string>
 #include <vector>
+#include <iostream>
+
 using namespace std;
 
+struct position {
+    int rowPos;
+    int colPos;
+};
+
 class chessPiece {
-public:
-    void move();
-    void setPossibleMoves();
-    vector<string> getPossibleMoves();
-};
-
-class pawn: public chessPiece {
-private:
-    string name;
+protected:
+    position currPos, oldPos;
     int player;
-    vector<string> possibleMoves;
+    char name;
+    vector<int> possibleMoves;
 public:
-    pawn(int player);
-    void move();
-    void setPossibleMoves();
-    vector<string> getPossibleMoves();
-};
 
-class rook: public chessPiece {
-private:
-    string name;
-    int player;
-    vector<string> possibleMoves;
-public:
-    rook(int player);
-    void move();
-    void setPossibleMoves();
-    vector<string> getPossibleMoves();
-};
+    bool move(position newPos);
 
-class bishop: public chessPiece {
-private:
-    string name;
-    int player;
-    vector<string> possibleMoves;
-public:
-    bishop(int player);
-    void move();
-    void setPossibleMoves();
-    vector<string> getPossibleMoves();
-};
+    int getPlayer() const;
 
-class queen: public chessPiece {
-private:
-    string name;
-    int player;
-    vector<string> possibleMoves;
-public:
-    queen(int player);
-    void move();
-    void setPossibleMoves();
-    vector<string> getPossibleMoves();
+    position getCurrPos() const;
+
+    position getOldPos() const;
+
+    char getName() const;
+
+    virtual void del();
+
+    virtual void setPossibleMoves(int **board) = 0;
 };
 
 
