@@ -3,14 +3,14 @@
 chessPiece::chessPiece(int player) {
 
     this->player = player;
-    this->currPos.rowPos = -1;
-    this->currPos.colPos = -1;
+    this->currPos.RowPos = -1;
+    this->currPos.ColPos = -1;
 }
 
 bool chessPiece::move(position newPos) {
 
     for (int i = 0; i < this->possibleMoves.size(); i++) {
-        if ((this->possibleMoves[i] / 10 == newPos.rowPos) && (this->possibleMoves[i] % 10) == newPos.colPos) {
+        if ((this->possibleMoves[i] / 10 == newPos.RowPos) && (this->possibleMoves[i] % 10) == newPos.ColPos) {
             this->oldPos = currPos;
             this->currPos = newPos;
             return true;
@@ -41,6 +41,6 @@ char chessPiece::getName() const {
 
 void chessPiece::del() {
 
-    this->currPos.rowPos = -1;
-    this->currPos.colPos = -1;
+    this->currPos.RowPos = -1;
+    this->currPos.ColPos = -1;
 }

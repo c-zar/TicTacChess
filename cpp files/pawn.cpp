@@ -8,7 +8,7 @@ pawn::pawn(int player) : chessPiece(player) {
 
 void pawn::setPossibleMoves(int **board) {
 
-    if (this->currPos.rowPos == -1) {
+    if (this->currPos.RowPos == -1) {
         this->possibleMoves.clear();
         for (int i = 0; i < 4; ++i) {
             for (int j = 0; j < 4; ++j) {
@@ -28,57 +28,57 @@ void pawn::setPossibleMoves(int **board) {
     else
         compare = 2;
 
-    if (this->currPos.colPos == 0) {
+    if (this->currPos.ColPos == 0) {
 
         this->direction = 2;
 
-        if (board[this->currPos.rowPos][this->currPos.colPos + 1] == 0)
-            this->possibleMoves.push_back((this->currPos.rowPos * 10) + this->currPos.colPos + 1);
-        if (this->currPos.rowPos - 1 >= 0 && this->currPos.colPos + 1 < 4) {
-            if (board[this->currPos.rowPos - 1][this->currPos.colPos + 1] == compare)
-                this->possibleMoves.push_back(((this->currPos.rowPos - 1) * 10) + this->currPos.colPos + 1);
+        if (board[this->currPos.RowPos][this->currPos.ColPos + 1] == 0)
+            this->possibleMoves.push_back((this->currPos.RowPos * 10) + this->currPos.ColPos + 1);
+        if (this->currPos.RowPos - 1 >= 0 && this->currPos.ColPos + 1 < 4) {
+            if (board[this->currPos.RowPos - 1][this->currPos.ColPos + 1] == compare)
+                this->possibleMoves.push_back(((this->currPos.RowPos - 1) * 10) + this->currPos.ColPos + 1);
         }
-        if (this->currPos.rowPos + 1 < 4 && this->currPos.colPos + 1 < 4) {
-            if (board[this->currPos.rowPos + 1][this->currPos.colPos + 1] == compare)
-                this->possibleMoves.push_back(((this->currPos.rowPos + 1) * 10) + this->currPos.colPos + 1);
+        if (this->currPos.RowPos + 1 < 4 && this->currPos.ColPos + 1 < 4) {
+            if (board[this->currPos.RowPos + 1][this->currPos.ColPos + 1] == compare)
+                this->possibleMoves.push_back(((this->currPos.RowPos + 1) * 10) + this->currPos.ColPos + 1);
         }
-    } else if (this->currPos.colPos == 3) {
+    } else if (this->currPos.ColPos == 3) {
 
         this->direction = 1;
 
-        if (board[this->currPos.rowPos][this->currPos.colPos - 1] == 0)
-            this->possibleMoves.push_back((this->currPos.rowPos * 10) + this->currPos.colPos - 1);
-        if (this->currPos.rowPos - 1 >= 0 && this->currPos.colPos - 1 >= 0) {
-            if (board[this->currPos.rowPos - 1][this->currPos.colPos - 1] == compare)
-                this->possibleMoves.push_back(((this->currPos.rowPos - 1) * 10) + this->currPos.colPos - 1);
+        if (board[this->currPos.RowPos][this->currPos.ColPos - 1] == 0)
+            this->possibleMoves.push_back((this->currPos.RowPos * 10) + this->currPos.ColPos - 1);
+        if (this->currPos.RowPos - 1 >= 0 && this->currPos.ColPos - 1 >= 0) {
+            if (board[this->currPos.RowPos - 1][this->currPos.ColPos - 1] == compare)
+                this->possibleMoves.push_back(((this->currPos.RowPos - 1) * 10) + this->currPos.ColPos - 1);
         }
-        if (this->currPos.rowPos + 1 < 4 && this->currPos.colPos - 1 >= 0) {
-            if (board[this->currPos.rowPos + 1][this->currPos.colPos - 1] == compare)
-                this->possibleMoves.push_back(((this->currPos.rowPos + 1) * 10) + this->currPos.colPos - 1);
+        if (this->currPos.RowPos + 1 < 4 && this->currPos.ColPos - 1 >= 0) {
+            if (board[this->currPos.RowPos + 1][this->currPos.ColPos - 1] == compare)
+                this->possibleMoves.push_back(((this->currPos.RowPos + 1) * 10) + this->currPos.ColPos - 1);
         }
     } else {
 
         if (this->direction == 2) {
-            if (board[this->currPos.rowPos][this->currPos.colPos + 1] == 0)
-                this->possibleMoves.push_back((this->currPos.rowPos * 10) + this->currPos.colPos + 1);
-            if (this->currPos.rowPos - 1 >= 0 && this->currPos.colPos + 1 < 4) {
-                if (board[this->currPos.rowPos - 1][this->currPos.colPos + 1] == compare)
-                    this->possibleMoves.push_back(((this->currPos.rowPos - 1) * 10) + this->currPos.colPos + 1);
+            if (board[this->currPos.RowPos][this->currPos.ColPos + 1] == 0)
+                this->possibleMoves.push_back((this->currPos.RowPos * 10) + this->currPos.ColPos + 1);
+            if (this->currPos.RowPos - 1 >= 0 && this->currPos.ColPos + 1 < 4) {
+                if (board[this->currPos.RowPos - 1][this->currPos.ColPos + 1] == compare)
+                    this->possibleMoves.push_back(((this->currPos.RowPos - 1) * 10) + this->currPos.ColPos + 1);
             }
-            if (this->currPos.rowPos + 1 < 4 && this->currPos.colPos + 1 < 4) {
-                if (board[this->currPos.rowPos + 1][this->currPos.colPos + 1] == compare)
-                    this->possibleMoves.push_back(((this->currPos.rowPos + 1) * 10) + this->currPos.colPos + 1);
+            if (this->currPos.RowPos + 1 < 4 && this->currPos.ColPos + 1 < 4) {
+                if (board[this->currPos.RowPos + 1][this->currPos.ColPos + 1] == compare)
+                    this->possibleMoves.push_back(((this->currPos.RowPos + 1) * 10) + this->currPos.ColPos + 1);
             }
         } else {
-            if (board[this->currPos.rowPos][this->currPos.colPos - 1] == 0)
-                this->possibleMoves.push_back((this->currPos.rowPos * 10) + this->currPos.colPos - 1);
-            if (this->currPos.rowPos - 1 >= 0 && this->currPos.colPos - 1 >= 0) {
-                if (board[this->currPos.rowPos - 1][this->currPos.colPos - 1] == compare)
-                    this->possibleMoves.push_back(((this->currPos.rowPos - 1) * 10) + this->currPos.colPos - 1);
+            if (board[this->currPos.RowPos][this->currPos.ColPos - 1] == 0)
+                this->possibleMoves.push_back((this->currPos.RowPos * 10) + this->currPos.ColPos - 1);
+            if (this->currPos.RowPos - 1 >= 0 && this->currPos.ColPos - 1 >= 0) {
+                if (board[this->currPos.RowPos - 1][this->currPos.ColPos - 1] == compare)
+                    this->possibleMoves.push_back(((this->currPos.RowPos - 1) * 10) + this->currPos.ColPos - 1);
             }
-            if (this->currPos.rowPos + 1 < 4 && this->currPos.colPos - 1 >= 0) {
-                if (board[this->currPos.rowPos + 1][this->currPos.colPos - 1] == compare)
-                    this->possibleMoves.push_back(((this->currPos.rowPos + 1) * 10) + this->currPos.colPos - 1);
+            if (this->currPos.RowPos + 1 < 4 && this->currPos.ColPos - 1 >= 0) {
+                if (board[this->currPos.RowPos + 1][this->currPos.ColPos - 1] == compare)
+                    this->possibleMoves.push_back(((this->currPos.RowPos + 1) * 10) + this->currPos.ColPos - 1);
             }
         }
     }

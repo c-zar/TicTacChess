@@ -7,7 +7,7 @@ bishop::bishop(int player) : chessPiece(player) {
 
 void bishop::setPossibleMoves(int **board) {
 
-    if (this->currPos.rowPos == -1) {
+    if (this->currPos.RowPos == -1) {
         this->possibleMoves.clear();
         for (int i = 0; i < 4; ++i) {
             for (int j = 0; j < 4; ++j) {
@@ -26,27 +26,55 @@ void bishop::setPossibleMoves(int **board) {
 
     this->possibleMoves.clear();
 
-    for (int i = 0; i < 3; ++i) {
+    int i = 1;
 
-        if (this->currPos.rowPos + i < 4 && this->currPos.colPos + i < 4) {
-            if (board[this->currPos.rowPos + i][this->currPos.colPos + i] == 0 ||
-                board[this->currPos.rowPos + i][this->currPos.colPos + i] == compare)
-                possibleMoves.push_back(((currPos.rowPos + i) * 10) + (currPos.colPos + i));
+    while (this->currPos.RowPos + i < 4 && this->currPos.ColPos + i < 4) {
+        while (board[this->currPos.RowPos + i][this->currPos.ColPos + i] == 0) {
+            possibleMoves.push_back(((currPos.RowPos + i) * 10) + (currPos.ColPos + i));
+            i++;
         }
-        if (this->currPos.rowPos - i >= 0 && this->currPos.colPos + i < 4) {
-            if (board[this->currPos.rowPos - i][this->currPos.colPos + i] == 0 ||
-                board[this->currPos.rowPos - i][this->currPos.colPos + i] == compare)
-                possibleMoves.push_back(((currPos.rowPos - i) * 10) + (currPos.colPos + i));
+        if (board[this->currPos.RowPos + i][this->currPos.ColPos + i] == compare) {
+            possibleMoves.push_back(((currPos.RowPos + i) * 10) + (currPos.ColPos + i));
+            break;
         }
-        if (this->currPos.rowPos - i >= 0 && this->currPos.colPos - i >= 0) {
-            if (board[this->currPos.rowPos - i][this->currPos.colPos - i] == 0 ||
-                board[this->currPos.rowPos - i][this->currPos.colPos - i] == compare)
-                possibleMoves.push_back(((currPos.rowPos - i) * 10) + (currPos.colPos - i));
+    }
+
+    i = 1;
+
+    while (this->currPos.RowPos - i >= 0 && this->currPos.ColPos + i < 4) {
+        while (board[this->currPos.RowPos - i][this->currPos.ColPos + i] == 0) {
+            possibleMoves.push_back(((currPos.RowPos - i) * 10) + (currPos.ColPos + i));
+            i++;
         }
-        if (this->currPos.rowPos + i < 4 && this->currPos.colPos - i >= 0) {
-            if (board[this->currPos.rowPos + i][this->currPos.colPos - i] == 0 ||
-                board[this->currPos.rowPos + i][this->currPos.colPos - i] == compare)
-                possibleMoves.push_back(((currPos.rowPos + i) * 10) + (currPos.colPos - i));
+        if (board[this->currPos.RowPos - i][this->currPos.ColPos + i] == compare) {
+            possibleMoves.push_back(((currPos.RowPos - i) * 10) + (currPos.ColPos + i));
+            break;
+        }
+    }
+
+    i = 1;
+
+    while (this->currPos.RowPos - i >= 0 && this->currPos.ColPos - i >= 0) {
+        while (board[this->currPos.RowPos - i][this->currPos.ColPos - i] == 0) {
+            possibleMoves.push_back(((currPos.RowPos - i) * 10) + (currPos.ColPos - i));
+            i++;
+        }
+        if (board[this->currPos.RowPos - i][this->currPos.ColPos - i] == compare) {
+            possibleMoves.push_back(((currPos.RowPos - i) * 10) + (currPos.ColPos - i));
+            break;
+        }
+    }
+
+    i = 1;
+
+    while (this->currPos.RowPos + i < 4 && this->currPos.ColPos - i >= 0) {
+        while (board[this->currPos.RowPos + i][this->currPos.ColPos - i] == 0) {
+            possibleMoves.push_back(((currPos.RowPos + i) * 10) + (currPos.ColPos - i));
+            i++;
+        }
+        if (board[this->currPos.RowPos + i][this->currPos.ColPos - i] == compare) {
+            possibleMoves.push_back(((currPos.RowPos + i) * 10) + (currPos.ColPos - i));
+            break;
         }
     }
 }

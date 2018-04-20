@@ -7,7 +7,7 @@ rook::rook(int player) : chessPiece(player) {
 
 void rook::setPossibleMoves(int **board) {
 
-    if (this->currPos.rowPos == -1) {
+    if (this->currPos.RowPos == -1) {
         this->possibleMoves.clear();
         for (int i = 0; i < 4; ++i) {
             for (int j = 0; j < 4; ++j) {
@@ -27,12 +27,55 @@ void rook::setPossibleMoves(int **board) {
 
     this->possibleMoves.clear();
 
-    for (int i = 0; i < 4; ++i) {
+    int i = 1;
 
-        if (board[this->currPos.rowPos][i] == 0 || board[this->currPos.rowPos][i] == compare)
-            possibleMoves.push_back((currPos.rowPos * 10) + i);
+    while (this->currPos.ColPos + i < 4) {
+        while (board[this->currPos.RowPos][this->currPos.ColPos + i] == 0) {
+            possibleMoves.push_back((currPos.RowPos * 10) + this->currPos.ColPos + i);
+            i++;
+        }
+        if (board[this->currPos.RowPos][this->currPos.ColPos + i] == compare) {
+            possibleMoves.push_back((currPos.RowPos * 10) + this->currPos.ColPos + i);
+            break;
+        }
+    }
 
-        if (board[i][this->currPos.colPos] == 0 || board[i][this->currPos.colPos] == compare)
-            possibleMoves.push_back((i * 10) + currPos.colPos);
+    i = 1;
+
+    while (this->currPos.RowPos + i < 4) {
+        while (board[this->currPos.RowPos + i][this->currPos.ColPos] == 0) {
+            possibleMoves.push_back(((currPos.RowPos + i) * 10) + this->currPos.ColPos);
+            i++;
+        }
+        if (board[this->currPos.RowPos + i][this->currPos.ColPos] == compare) {
+            possibleMoves.push_back(((currPos.RowPos + i) * 10) + this->currPos.ColPos);
+            break;
+        }
+    }
+
+    i = 1;
+
+    while (this->currPos.RowPos - i >= 0) {
+        while (board[this->currPos.RowPos - i][this->currPos.ColPos] == 0) {
+            possibleMoves.push_back(((currPos.RowPos - i) * 10) + this->currPos.ColPos);
+            i++;
+        }
+        if (board[this->currPos.RowPos - i][this->currPos.ColPos] == compare) {
+            possibleMoves.push_back(((currPos.RowPos - i) * 10) + this->currPos.ColPos);
+            break;
+        }
+    }
+
+    i = 1;
+
+    while (this->currPos.ColPos - i >= 0) {
+        while (board[this->currPos.RowPos][this->currPos.ColPos - i] == 0) {
+            possibleMoves.push_back((currPos.RowPos * 10) + this->currPos.ColPos - i);
+            i++;
+        }
+        if (board[this->currPos.RowPos][this->currPos.ColPos - i] == compare) {
+            possibleMoves.push_back((currPos.RowPos * 10) + this->currPos.ColPos - i);
+            break;
+        }
     }
 }

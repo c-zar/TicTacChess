@@ -28,26 +28,26 @@ bool game::move(char pieceName, position newPos, int **board) {
     if (this->turn == 1) {
         if (p1.move(pieceName, newPos, board)) {
             piece = p1.getPiece(pieceName);
-            if (chessBoard[newPos.rowPos][newPos.colPos] != nullptr) {
-                chessBoard[newPos.rowPos][newPos.colPos]->del();
+            if (chessBoard[newPos.RowPos][newPos.ColPos] != nullptr) {
+                chessBoard[newPos.RowPos][newPos.ColPos]->del();
             }
-            chessBoard[newPos.rowPos][newPos.colPos] = piece;
-            boardCopy[newPos.rowPos][newPos.colPos] = piece->getPlayer();
-            chessBoard[piece->getOldPos().rowPos][piece->getOldPos().colPos] = nullptr;
-            boardCopy[piece->getOldPos().rowPos][piece->getOldPos().colPos] = 0;
+            chessBoard[newPos.RowPos][newPos.ColPos] = piece;
+            boardCopy[newPos.RowPos][newPos.ColPos] = piece->getPlayer();
+            chessBoard[piece->getOldPos().RowPos][piece->getOldPos().ColPos] = nullptr;
+            boardCopy[piece->getOldPos().RowPos][piece->getOldPos().ColPos] = 0;
             this->turn = 2;
             return true;
         }
     } else {
         if (p2.move(pieceName, newPos, board)) {
             piece = p2.getPiece(pieceName);
-            if (chessBoard[newPos.rowPos][newPos.colPos] != nullptr) {
-                chessBoard[newPos.rowPos][newPos.colPos]->del();
+            if (chessBoard[newPos.RowPos][newPos.ColPos] != nullptr) {
+                chessBoard[newPos.RowPos][newPos.ColPos]->del();
             }
-            chessBoard[newPos.rowPos][newPos.colPos] = piece;
-            boardCopy[newPos.rowPos][newPos.colPos] = piece->getPlayer();
-            chessBoard[piece->getOldPos().rowPos][piece->getOldPos().colPos] = nullptr;
-            boardCopy[piece->getOldPos().rowPos][piece->getOldPos().colPos] = 0;
+            chessBoard[newPos.RowPos][newPos.ColPos] = piece;
+            boardCopy[newPos.RowPos][newPos.ColPos] = piece->getPlayer();
+            chessBoard[piece->getOldPos().RowPos][piece->getOldPos().ColPos] = nullptr;
+            boardCopy[piece->getOldPos().RowPos][piece->getOldPos().ColPos] = 0;
             this->turn = 1;
             return true;
         }

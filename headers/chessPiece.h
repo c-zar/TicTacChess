@@ -8,8 +8,8 @@
 using namespace std;
 
 struct position {
-    int rowPos;
-    int colPos;
+    int RowPos;
+    int ColPos;
 };
 
 class chessPiece {
@@ -19,6 +19,7 @@ protected:
     char name;
     vector<int> possibleMoves;
 public:
+    chessPiece(int player);
 
     bool move(position newPos);
 
